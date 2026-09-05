@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marie's Bachelorette — Barcelona 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --linen: #F6F1EB; --cream: #EDE6DC; --sand: #DDD0C0; --taupe: #BEA898;
+    --text-dark: #2C3A3A; --text-mid: #5A6A6A; --text-light: #9AADAC;
+    --sage: #7DAB85; --sage-light: #C8DFC8; --sage-pale: #E8F4E8;
+    --ocean: #5A96B8; --ocean-mid: #7AB0CC; --ocean-light: #BDD9EC; --ocean-pale: #E2F0F8;
+    --terra: #C4906A; --terra-light: #EDD5C2; --wave-line: #A8CDD8;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--linen); color: var(--text-dark); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(246,241,235,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--sand); padding: 0.65rem 2rem; display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  nav a { text-decoration: none; color: var(--text-mid); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; transition: color 0.2s; }
+  nav a:hover { color: var(--ocean); }
+  .nav-name { font-family: 'Pinyon Script', cursive; font-size: 1.5rem; color: var(--text-dark); line-height: 1; }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 5rem 2rem 5rem; position: relative; overflow: hidden; background: var(--linen); }
+  .deco-corner { position: absolute; pointer-events: none; opacity: 0.14; }
+  .deco-tl { top: 0; left: 0; }
+  .deco-br { bottom: 60px; right: 0; transform: scaleX(-1); }
+  .hero-eyebrow { font-size: 0.7rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--ocean); margin-bottom: 1.2rem; }
+  .hero-pre { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem,2.5vw,1.3rem); font-style: italic; color: var(--text-mid); margin-bottom: 0.1rem; }
+  .hero-script { font-family: 'Pinyon Script', cursive; font-size: clamp(5rem,15vw,10.5rem); color: var(--text-dark); line-height: 0.92; margin-bottom: 0.2rem; }
+  .hero-place { font-family: 'Pinyon Script', cursive; font-size: clamp(2.5rem,6vw,4.2rem); color: var(--ocean); line-height: 1; margin-bottom: 2rem; }
+  .hero-rule { display: flex; align-items: center; gap: 1rem; margin: 0 auto 1.8rem; max-width: 340px; }
+  .hero-rule-line { flex: 1; height: 1px; background: var(--taupe); }
+  .hero-rule-shell { width: 12px; height: 12px; border-radius: 0 50% 50% 50%; background: var(--ocean-light); transform: rotate(-45deg); }
+  .hero-dates { font-family: 'Cormorant Garamond', serif; font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 2rem; }
+  .pill { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.9rem; border-radius: 999px; border: 1px solid; }
+  .p-ocean { background: var(--ocean-pale); border-color: var(--ocean-light); color: var(--ocean); }
+  .p-sage { background: var(--sage-pale); border-color: var(--sage-light); color: var(--sage); }
+  .p-terra { background: #F5EBE3; border-color: var(--terra-light); color: var(--terra); }
+  .p-neutral { background: var(--cream); border-color: var(--sand); color: var(--text-mid); }
+  .hero-waves { position: absolute; bottom: 0; left: 0; right: 0; pointer-events: none; }
+
+  /* SECTIONS */
+  section { max-width: 920px; margin: 0 auto; padding: 5rem 2rem; }
+  section.band { max-width: none; padding: 5rem 2rem; background: var(--cream); border-top: 1px solid var(--sand); border-bottom: 1px solid var(--sand); }
+  section.band > .inner { max-width: 920px; margin: 0 auto; }
+  .s-eye { font-size: 0.68rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ocean); margin-bottom: 0.5rem; }
+  .s-title { font-family: 'Pinyon Script', cursive; font-size: clamp(3rem,8vw,5.5rem); color: var(--text-dark); line-height: 1; margin-bottom: 0.7rem; }
+  .s-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: var(--text-mid); max-width: 500px; margin-bottom: 3rem; }
+
+  /* TIMELINE */
+  .day-block { margin-bottom: 3.5rem; }
+  .day-header { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1.5rem; }
+  .day-num { font-family: 'Cormorant Garamond', serif; font-size: 4.5rem; font-weight: 300; line-height: 1; color: var(--sand); min-width: 65px; text-align: center; }
+  .day-name { font-family: 'Pinyon Script', cursive; font-size: 2.8rem; color: var(--text-dark); line-height: 1; }
+  .day-date { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-light); margin-top: 0.2rem; }
+  .day-tag { margin-left: auto; }
+  .timeline { border-left: 1px solid var(--wave-line); margin-left: 32px; }
+  .ti { position: relative; display: flex; gap: 1.4rem; padding: 0.85rem 0 0.85rem 2rem; }
+  .ti::before { content: ''; position: absolute; left: -5px; top: 1.3rem; width: 9px; height: 9px; border-radius: 50%; background: var(--linen); border: 1.5px solid var(--taupe); }
+  .ti.hl::before { background: var(--sage-pale); border-color: var(--sage); }
+  .ti.sp::before { background: var(--ocean-pale); border-color: var(--ocean); }
+  .ti.ft::before { background: #F5EBE3; border-color: var(--terra-light); }
+  .t-time { font-family: 'Cormorant Garamond', serif; font-size: 0.84rem; color: var(--text-light); min-width: 72px; padding-top: 0.1rem; font-style: italic; flex-shrink: 0; }
+  .t-title { font-size: 0.92rem; font-weight: 400; color: var(--text-dark); letter-spacing: 0.02em; }
+  .t-desc { font-family: 'Cormorant Garamond', serif; font-size: 0.96rem; color: var(--text-light); font-style: italic; margin-top: 0.15rem; }
+  .badge { display: inline-block; margin-top: 0.4rem; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.18rem 0.65rem; border-radius: 999px; border: 1px solid; }
+  .b-sage { background: var(--sage-pale); border-color: var(--sage-light); color: var(--sage); }
+  .b-ocean { background: var(--ocean-pale); border-color: var(--ocean-light); color: var(--ocean); }
+  .b-terra { background: #F5EBE3; border-color: var(--terra-light); color: var(--terra); }
+  .b-tbd { background: var(--cream); border-color: var(--sand); color: var(--text-light); }
+
+  /* WAVE DIVIDER */
+  .wdiv { display: flex; align-items: center; gap: 1rem; margin: 2.5rem 0; }
+  .wdiv-line { flex: 1; height: 1px; background: var(--sand); }
+
+  /* ACTIVITIES */
+  .act-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 1.2rem; }
+  .act-card { border: 1px solid var(--sand); border-radius: 18px; padding: 1.5rem 1.4rem; background: var(--linen); transition: border-color 0.2s, transform 0.15s; cursor: default; }
+  .act-card:hover { border-color: var(--ocean-light); transform: translateY(-2px); }
+  .act-icon { font-size: 1.6rem; margin-bottom: 0.7rem; display: block; }
+  .act-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--text-dark); margin-bottom: 0.2rem; }
+  .act-note { font-size: 0.72rem; color: var(--text-light); letter-spacing: 0.04em; }
+
+  /* GUESTS */
+  .guests-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(148px,1fr)); gap: 1.1rem; }
+  .g-card { background: var(--linen); border: 1px solid var(--sand); border-radius: 18px; padding: 1.4rem 1rem; text-align: center; }
+  .g-card.bride { border-color: var(--ocean-light); background: var(--ocean-pale); }
+  .g-av { width: 50px; height: 50px; border-radius: 50%; margin: 0 auto 0.7rem; display: flex; align-items: center; justify-content: center; font-family: 'Pinyon Script', cursive; font-size: 1.3rem; }
+  .g-av.bride { width: 58px; height: 58px; font-size: 1.5rem; background: var(--ocean-pale); color: var(--ocean); border: 1.5px solid var(--ocean-light); }
+  .g-av.sage { background: var(--sage-pale); color: var(--sage); border: 1px solid var(--sage-light); }
+  .g-av.ocean { background: var(--ocean-pale); color: var(--ocean); border: 1px solid var(--ocean-light); }
+  .g-av.terra { background: #F5EBE3; color: var(--terra); border: 1px solid var(--terra-light); }
+  .g-av.neutral { background: var(--cream); color: var(--text-mid); border: 1px solid var(--sand); }
+  .g-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--text-dark); margin-bottom: 0.15rem; }
+  .g-card.bride .g-name { color: var(--ocean); }
+  .g-role { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); }
+
+  /* STAY */
+  .stay-card { background: var(--linen); border: 1px solid var(--sand); border-radius: 22px; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+  @media(max-width:600px){ .stay-card { grid-template-columns: 1fr; } }
+  .stay-label { font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ocean); margin-bottom: 0.4rem; }
+  .stay-name { font-family: 'Pinyon Script', cursive; font-size: 2.8rem; color: var(--text-dark); line-height: 1.1; }
+  .stay-addr { font-size: 0.84rem; color: var(--text-mid); margin-top: 0.5rem; }
+  .stay-list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+  .stay-list li { display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.84rem; color: var(--text-mid); }
+  .stay-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ocean-light); border: 1px solid var(--ocean); flex-shrink: 0; margin-top: 0.45rem; }
+  .stay-note { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.95rem; color: var(--text-light); margin-top: 1rem; border-top: 1px solid var(--sand); padding-top: 1rem; }
+
+  /* MERCH */
+  .merch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px,1fr)); gap: 1.1rem; }
+  .m-card { border: 1px solid var(--sand); border-radius: 18px; padding: 1.5rem 1.2rem; text-align: center; background: var(--linen); }
+  .m-icon { font-size: 1.8rem; margin-bottom: 0.7rem; display: block; }
+  .m-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--text-dark); margin-bottom: 0.2rem; }
+  .m-note { font-size: 0.7rem; color: var(--text-light); letter-spacing: 0.04em; }
+
+  /* PACK */
+  .pack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(235px,1fr)); gap: 1.4rem; }
+  .pack-cat { background: var(--linen); border: 1px solid var(--sand); border-radius: 18px; overflow: hidden; }
+  .pack-head { padding: 0.85rem 1.3rem; border-bottom: 1px solid var(--sand); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; background: var(--cream); color: var(--text-mid); }
+  .pack-head.ocean { background: var(--ocean-pale); color: var(--ocean); border-bottom-color: var(--ocean-light); }
+  .pack-head.sage { background: var(--sage-pale); color: var(--sage); border-bottom-color: var(--sage-light); }
+  .pack-head.terra { background: #F5EBE3; color: var(--terra); border-bottom-color: var(--terra-light); }
+  .pack-list { list-style: none; padding: 1rem 1.3rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .pack-list li { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--text-mid); display: flex; align-items: flex-start; gap: 0.6rem; }
+  .pack-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--taupe); flex-shrink: 0; margin-top: 0.58rem; }
+
+  /* VIBES */
+  .vibes-board { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+  @media(max-width:600px){ .vibes-board { grid-template-columns: 1fr 1fr; } }
+  .vc { border-radius: 18px; padding: 2rem 1.5rem; display: flex; flex-direction: column; justify-content: flex-end; min-height: 155px; border: 1px solid transparent; }
+  .vc.ocean { background: var(--ocean-pale); border-color: var(--ocean-light); }
+  .vc.sage { background: var(--sage-pale); border-color: var(--sage-light); }
+  .vc.terra { background: #F5EBE3; border-color: var(--terra-light); }
+  .vc.sand { background: var(--cream); border-color: var(--sand); }
+  .vc.tall { grid-row: span 2; min-height: 330px; justify-content: flex-start; }
+  .vibe-word { font-family: 'Pinyon Script', cursive; font-size: 2.6rem; line-height: 1; margin-bottom: 0.4rem; color: var(--text-dark); }
+  .vibe-sub { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); }
+
+  /* FOOTER */
+  footer { text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--sand); background: var(--cream); }
+  .ft-script { font-family: 'Pinyon Script', cursive; font-size: 3.5rem; color: var(--text-dark); margin-bottom: 0.5rem; }
+  footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--text-light); font-size: 1rem; }
+  .ft-meta { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sand); margin-top: 1.5rem; font-style: normal; font-family: 'Jost', sans-serif; }
+
+  /* MEMORIES */
+  .mem-prompt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 1.1rem; margin-bottom: 2.5rem; }
+  .mem-prompt-card { border-radius: 18px; border: 1px solid transparent; padding: 1.6rem 1.4rem; display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .mem-prompt-card.ocean { background: var(--ocean-pale); border-color: var(--ocean-light); }
+  .mem-prompt-card.sage { background: var(--sage-pale); border-color: var(--sage-light); }
+  .mem-prompt-card.terra { background: #F5EBE3; border-color: var(--terra-light); }
+  .mem-prompt-card.sand { background: var(--cream); border-color: var(--sand); }
+  .mem-prompt-icon { font-size: 1.5rem; }
+  .mem-prompt-text { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--text-mid); line-height: 1.5; }
+  .mem-cta-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+  @media(max-width:640px){ .mem-cta-wrap { grid-template-columns: 1fr; } }
+  .mem-cta-card { background: var(--ocean-pale); border: 1px solid var(--ocean-light); border-radius: 22px; padding: 2.2rem; }
+  .mem-cta-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ocean); margin-bottom: 0.4rem; }
+  .mem-cta-desc { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--text-mid); font-size: 1rem; margin-bottom: 1.4rem; line-height: 1.6; }
+  .mem-btn { display: inline-block; background: var(--ocean); color: #fff; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.7rem 1.4rem; border-radius: 999px; transition: opacity 0.2s; }
+  .mem-btn:hover { opacity: 0.85; }
+  .mem-hint { font-size: 0.68rem; color: var(--text-light); margin-top: 0.75rem; letter-spacing: 0.04em; font-style: italic; }
+  .mem-how { background: var(--linen); border: 1px solid var(--sand); border-radius: 22px; padding: 2.2rem; }
+  .mem-how-title { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-light); margin-bottom: 1.1rem; }
+  .mem-how-list { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; counter-reset: steps; }
+  .mem-how-list li { display: flex; gap: 0.9rem; align-items: flex-start; font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--text-mid); counter-increment: steps; }
+  .mem-how-list li::before { content: counter(steps); min-width: 24px; height: 24px; border-radius: 50%; background: var(--ocean-pale); border: 1px solid var(--ocean-light); color: var(--ocean); font-family: 'Jost', sans-serif; font-size: 0.72rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.15rem; }
+  .mem-how-list li strong { color: var(--text-dark); font-weight: 500; }
+  .mem-how-list li em { font-style: italic; color: var(--text-dark); }
+
+  /* FLIGHTS */
+  .flight-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media(max-width:720px){ .flight-wrap { grid-template-columns: 1fr; } }
+  .flight-col { background: var(--linen); border: 1px solid var(--sand); border-radius: 22px; overflow: hidden; }
+  .flight-head { padding: 1rem 1.5rem; border-bottom: 1px solid var(--sand); background: var(--cream); }
+  .flight-head.ocean { background: var(--ocean-pale); border-bottom-color: var(--ocean-light); }
+  .flight-head.terra { background: #F5EBE3; border-bottom-color: var(--terra-light); }
+  .flight-day { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--text-dark); line-height: 1.2; }
+  .flight-sub { font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); margin-top: 0.15rem; }
+  .flight-list { padding: 0.6rem 1.5rem 1.4rem; }
+  .flight-row { display: flex; align-items: baseline; gap: 1rem; padding: 0.55rem 0; border-bottom: 1px dashed var(--sand); }
+  .flight-row:last-child { border-bottom: none; }
+  .flight-time { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.95rem; color: var(--ocean); min-width: 74px; flex-shrink: 0; }
+  .flight-who { font-size: 0.92rem; color: var(--text-dark); }
+  .flight-note { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.9rem; color: var(--text-light); margin-left: auto; text-align: right; }
+  .flight-row.late .flight-time { color: var(--terra); }
+
+  /* NOTE CARD */
+  .note { border-radius: 20px; padding: 1.6rem 1.8rem; border: 1px solid var(--terra-light); background: #F5EBE3; margin: 2rem 0; }
+  .note.ocean { background: var(--ocean-pale); border-color: var(--ocean-light); }
+  .note.sage { background: var(--sage-pale); border-color: var(--sage-light); }
+  .note-label { font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terra); margin-bottom: 0.4rem; }
+  .note.ocean .note-label { color: var(--ocean); }
+  .note.sage .note-label { color: var(--sage); }
+  .note-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--text-dark); line-height: 1.25; margin-bottom: 0.5rem; }
+  .note p { font-family: 'Cormorant Garamond', serif; font-size: 1.02rem; color: var(--text-mid); line-height: 1.65; }
+  .note p + p { margin-top: 0.7rem; }
+
+  /* FEASTS */
+  .feast-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1.3rem; }
+  .feast-card { background: var(--linen); border: 1px solid var(--sand); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
+  .feast-head { padding: 1.1rem 1.4rem 0.9rem; border-bottom: 1px solid var(--sand); }
+  .feast-head.ocean { background: var(--ocean-pale); border-bottom-color: var(--ocean-light); }
+  .feast-head.sage { background: var(--sage-pale); border-bottom-color: var(--sage-light); }
+  .feast-head.terra { background: #F5EBE3; border-bottom-color: var(--terra-light); }
+  .feast-head.sand { background: var(--cream); }
+  .feast-when { font-size: 0.64rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.25rem; }
+  .feast-name { font-family: 'Pinyon Script', cursive; font-size: 1.9rem; line-height: 1.05; color: var(--text-dark); }
+  .feast-body { padding: 1.1rem 1.4rem 1.4rem; }
+  .feast-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .feast-list li { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--text-mid); display: flex; gap: 0.6rem; align-items: flex-start; line-height: 1.5; }
+  .feast-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--taupe); flex-shrink: 0; margin-top: 0.55rem; }
+  .feast-list li strong { color: var(--text-dark); font-weight: 500; font-family: 'Jost', sans-serif; font-size: 0.88rem; }
+  .feast-foot { margin-top: 0.9rem; padding-top: 0.8rem; border-top: 1px solid var(--sand); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--text-light); font-style: italic; font-family: 'Cormorant Garamond', serif; }
+
+  /* SPLIT + PHOTOS */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; margin-top: 2.5rem; }
+  @media(max-width:700px){ .split { grid-template-columns: 1fr; } }
+  .split.rev .split-media { order: 2; }
+  @media(max-width:700px){ .split.rev .split-media { order: 0; } }
+  .photo { width: 100%; border-radius: 20px; display: block; border: 1px solid var(--sand); }
+  .photo.tall { max-height: 460px; object-fit: cover; }
+  .split-title { font-family: 'Pinyon Script', cursive; font-size: 2.6rem; line-height: 1.05; color: var(--text-dark); margin-bottom: 0.6rem; }
+  .split-text { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--text-mid); line-height: 1.7; }
+  .split-text + .split-text { margin-top: 0.8rem; }
+
+  /* MERCH PHOTO CARDS */
+  .m-card .m-photo { width: 100%; height: 190px; object-fit: contain; object-position: center; margin-bottom: 0.9rem; border-radius: 14px; background: #fff; }
+
+  /* DRINK */
+  .drink { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; background: var(--ocean-pale); border: 1px solid var(--ocean-light); border-radius: 22px; padding: 2.2rem; margin-top: 2.5rem; }
+  @media(max-width:700px){ .drink { grid-template-columns: 1fr; } }
+  .drink-name { font-family: 'Pinyon Script', cursive; font-size: 2.8rem; line-height: 1; color: var(--text-dark); margin-bottom: 0.5rem; }
+  .drink-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.02rem; color: var(--text-mid); line-height: 1.65; }
+  .drink-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .drink-list li { font-family: 'Cormorant Garamond', serif; font-size: 1.02rem; color: var(--text-mid); display: flex; gap: 0.6rem; align-items: flex-start; }
+  .drink-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--ocean); flex-shrink: 0; margin-top: 0.55rem; }
+
+  /* SHOP LIST */
+  .shop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px,1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+  .shop-cat { background: var(--linen); border: 1px solid var(--sand); border-radius: 18px; padding: 1.2rem 1.3rem; }
+  .shop-head { font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ocean); margin-bottom: 0.7rem; }
+  .shop-items { font-family: 'Cormorant Garamond', serif; font-size: 0.98rem; color: var(--text-mid); line-height: 1.6; }
+
+  @media(max-width:600px){
+    section { padding: 3rem 1.2rem; }
+    .ti { gap: 0.8rem; }
+    .t-time { min-width: 60px; font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Marie</span>
+  <a href="#arrivals">Arrivals</a>
+  <a href="#schedule">Schedule</a>
+  <a href="#feasts">Feasts</a>
+  <a href="#guests">The Crew</a>
+  <a href="#stay">Our Stay</a>
+  <a href="#merch">Merch</a>
+  <a href="#packing">Pack List</a>
+  <a href="#vibes">Vibes</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <svg class="deco-corner deco-tl" width="280" height="280" viewBox="0 0 280 280" fill="none">
+    <path d="M0,0 Q120,40 80,140 Q40,240 180,280" stroke="#5A96B8" stroke-width="1" fill="none"/>
+    <path d="M0,0 Q60,80 20,180" stroke="#7DAB85" stroke-width="0.8" fill="none"/>
+    <circle cx="80" cy="140" r="30" stroke="#5A96B8" stroke-width="0.6" fill="none"/>
+    <circle cx="40" cy="80" r="18" stroke="#7DAB85" stroke-width="0.6" fill="none"/>
+    <ellipse cx="120" cy="60" rx="14" ry="22" stroke="#C4906A" stroke-width="0.6" fill="none" transform="rotate(-30 120 60)"/>
+    <ellipse cx="55" cy="200" rx="10" ry="18" stroke="#7DAB85" stroke-width="0.5" fill="none" transform="rotate(20 55 200)"/>
+    <circle cx="160" cy="200" r="12" stroke="#5A96B8" stroke-width="0.5" fill="none"/>
+    <path d="M20,0 Q80,60 50,120" stroke="#BEA898" stroke-width="0.5" fill="none" stroke-dasharray="3 6"/>
+    <path d="M100,30 Q140,70 110,130" stroke="#BEA898" stroke-width="0.4" fill="none" stroke-dasharray="2 6"/>
+  </svg>
+  <svg class="deco-corner deco-br" width="230" height="230" viewBox="0 0 230 230" fill="none">
+    <path d="M0,0 Q100,30 70,130 Q40,210 190,230" stroke="#5A96B8" stroke-width="1" fill="none"/>
+    <circle cx="70" cy="130" r="25" stroke="#7DAB85" stroke-width="0.6" fill="none"/>
+    <ellipse cx="115" cy="50" rx="12" ry="20" stroke="#C4906A" stroke-width="0.6" fill="none" transform="rotate(-20 115 50)"/>
+    <path d="M0,20 Q55,75 30,150" stroke="#7DAB85" stroke-width="0.7" fill="none"/>
+    <circle cx="140" cy="180" r="15" stroke="#5A96B8" stroke-width="0.5" fill="none"/>
+  </svg>
+
+  <p class="hero-eyebrow">Barcelona · 10 – 13 September 2026</p>
+  <p class="hero-pre">It's time to celebrate</p>
+  <h1 class="hero-script">Marie</h1>
+  <p class="hero-place">Barcelona</p>
+
+  <div class="hero-rule">
+    <div class="hero-rule-line"></div>
+    <div class="hero-rule-shell"></div>
+    <svg width="26" height="13" viewBox="0 0 26 13" fill="none"><path d="M0,6.5 Q6.5,0 13,6.5 Q19.5,13 26,6.5" stroke="#9AADAC" stroke-width="1.1" fill="none"/></svg>
+    <div class="hero-rule-shell" style="transform:rotate(135deg)"></div>
+    <div class="hero-rule-line"></div>
+  </div>
+
+  <p class="hero-dates" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;">Four days · One house by the sea · The best people</p>
+
+  <div class="pill-row">
+    <span class="pill p-ocean">Fisherman's House</span>
+    <span class="pill p-sage">Barcelona Sunshine</span>
+    <span class="pill p-terra">Mediterranean Vibes</span>
+    <span class="pill p-ocean">Sea &amp; Sand</span>
+    <span class="pill p-neutral">André's Future Wife ♡</span>
+    <span class="pill p-sage">Bubbly as Kombucha</span>
+  </div>
+
+  <svg class="hero-waves" viewBox="0 0 1440 80" preserveAspectRatio="none" height="80">
+    <path d="M0,40 Q180,80 360,40 Q540,0 720,40 Q900,80 1080,40 Q1260,0 1440,40 L1440,80 L0,80 Z" fill="#EDE6DC" opacity="0.5"/>
+    <path d="M0,55 Q180,20 360,55 Q540,90 720,55 Q900,20 1080,55 Q1260,90 1440,55 L1440,80 L0,80 Z" fill="#EDE6DC"/>
+  </svg>
+</div>
+
+<!-- ARRIVALS -->
+<section class="band" id="arrivals">
+  <div class="inner">
+    <p class="s-eye">Who Lands When</p>
+    <h2 class="s-title">Arrivals</h2>
+
+    <div class="flight-wrap">
+      <div class="flight-col">
+        <div class="flight-head ocean">
+          <div class="flight-day">Landing</div>
+          <div class="flight-sub">Thursday 10 September</div>
+        </div>
+        <div class="flight-list">
+          <div class="flight-row"><span class="flight-time">13:15</span><span class="flight-who">Maxence</span></div>
+          <div class="flight-row"><span class="flight-time">13:30</span><span class="flight-who">Nicole</span></div>
+          <div class="flight-row"><span class="flight-time">14:45</span><span class="flight-who">Marie</span><span class="flight-note">Straight to check-in ♡</span></div>
+          <div class="flight-row"><span class="flight-time">15:55</span><span class="flight-who">Chiara</span></div>
+          <div class="flight-row"><span class="flight-time">18:00</span><span class="flight-who">Audrey &amp; David</span><span class="flight-note">Somewhere around 6–7</span></div>
+          <div class="flight-row late"><span class="flight-time">21:55</span><span class="flight-who">Nina</span><span class="flight-note">Plate kept warm</span></div>
+          <div class="flight-row"><span class="flight-time">TBC</span><span class="flight-who">Max</span></div>
+          <div class="flight-row late"><span class="flight-time">Sat 12:35</span><span class="flight-who">Jolien</span><span class="flight-note">Joins the scavenger hunt</span></div>
+        </div>
+      </div>
+
+      <div class="flight-col">
+        <div class="flight-head terra">
+          <div class="flight-day">Flying home</div>
+          <div class="flight-sub">Sunday 13 September</div>
+        </div>
+        <div class="flight-list">
+          <div class="flight-row"><span class="flight-time">07:20</span><span class="flight-who">Jolien</span><span class="flight-note">Brutal. We salute her.</span></div>
+          <div class="flight-row"><span class="flight-time">10:30</span><span class="flight-who">Chiara</span><span class="flight-note">Goodbyes on Saturday night</span></div>
+          <div class="flight-row"><span class="flight-time">19:00</span><span class="flight-who">Nicole</span><span class="flight-note">Leaves us after the hike</span></div>
+          <div class="flight-row"><span class="flight-time">20:45</span><span class="flight-who">Marie</span></div>
+          <div class="flight-row"><span class="flight-time">21:20</span><span class="flight-who">Nina</span></div>
+          <div class="flight-row"><span class="flight-time">21:40</span><span class="flight-who">Maxence</span></div>
+          <div class="flight-row"><span class="flight-time">TBD</span><span class="flight-who">Audrey &amp; David</span></div>
+          <div class="flight-row"><span class="flight-time">Monday</span><span class="flight-who">Max</span><span class="flight-note">Last one out</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note sage">
+      <p class="note-label">Two things to sort</p>
+      <p><strong>Suitcase storage on Sunday.</strong> Checkout is midday but the last flight is 21:40, so we need somewhere to leave bags from about 10:30. Book it before we fly — Sunday walk-ins fill up.</p>
+      <p><strong>Nicole leaves early.</strong> A 19:00 flight means she has to head off around 16:45, straight after the hike. Say the proper goodbye at the bottom of Tibidabo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule">
+  <p class="s-eye">Day by Day</p>
+  <h2 class="s-title">The Weekend</h2>
+  <p class="s-intro">Four days of sunshine, sea breeze, and the best company in the world.</p>
+
+  <!-- THURSDAY -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">01</div>
+      <div><div class="day-name">Thursday</div><div class="day-date">10 September 2026</div></div>
+      <div class="day-tag"><span class="pill p-sage">Arrival</span></div>
+    </div>
+    <div class="timeline">
+      <div class="ti sp">
+        <div class="t-time">15:00</div>
+        <div>
+          <div class="t-title">Check-in at the Fisherman&#39;s House</div>
+          <div class="t-desc">Drop your bags, open the blue shutters, and let Barcelona in.</div>
+        </div>
+      </div>
+      <div class="ti ft">
+        <div class="t-time">16:30</div>
+        <div>
+          <div class="t-title">The Big Shop</div>
+          <div class="t-desc">Everything for Thursday <em>and</em> Friday in one go — the shops are shut tomorrow.</div>
+          <span class="badge b-terra">Buy for two days</span>
+        </div>
+      </div>
+      <div class="ti hl">
+        <div class="t-time">19:00</div>
+        <div>
+          <div class="t-title">Cook the Welcome Feast Together</div>
+          <div class="t-desc">Everyone gets a job, music on, first bottle open.</div>
+          <span class="badge b-sage">Menu below ↓</span>
+        </div>
+      </div>
+      <div class="ti hl">
+        <div class="t-time">20:45</div>
+        <div>
+          <div class="t-title">Dinner at the Fisherman&#39;s House</div>
+          <div class="t-desc">The long table, the whole weekend ahead of us.</div>
+        </div>
+      </div>
+      <div class="ti sp">
+        <div class="t-time">22:45</div>
+        <div>
+          <div class="t-title">Merch Reveal</div>
+          <div class="t-desc">Embroidered head scarves and André tattoos, handed out once Nina is through the door.</div>
+          <span class="badge b-ocean">Wait for Nina</span>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="t-time">Late</div>
+        <div>
+          <div class="t-title">Games, and the Sea if We&#39;re Brave</div>
+          <div class="t-desc">Maxence is bringing games — everyone else, throw one in your bag too. An easy first night, big weekend to come.</div>
+          <span class="badge b-sage">Bring a game</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wdiv"><div class="wdiv-line"></div><svg width="32" height="16" viewBox="0 0 32 16" fill="none"><path d="M0,8 Q8,0 16,8 Q24,16 32,8" stroke="#A8CDD8" stroke-width="1.2" fill="none"/></svg><div class="wdiv-line"></div></div>
+
+  <!-- FRIDAY -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">02</div>
+      <div><div class="day-name">Friday</div><div class="day-date">11 September 2026</div></div>
+      <div class="day-tag"><span class="pill p-ocean">All in White</span></div>
+    </div>
+    <div class="timeline">
+      <div class="ti hl">
+        <div class="t-time">10:30</div>
+        <div>
+          <div class="t-title">The Long Brunch</div>
+          <div class="t-desc">Slow, sunny, nowhere to be. Tortilla made last night, coffee on repeat.</div>
+          <span class="badge b-terra">Shops shut · La Diada</span>
+        </div>
+      </div>
+      <div class="ti sp">
+        <div class="t-time">12:30</div>
+        <div>
+          <div class="t-title">A Long Walk on the Beach</div>
+          <div class="t-desc">Barefoot, the whole stretch, no plan and no rush.</div>
+        </div>
+      </div>
+      <div class="ti sp">
+        <div class="t-time">14:30</div>
+        <div>
+          <div class="t-title">Stretch, Swim, Do Nothing</div>
+          <div class="t-desc">Stretching on the sand, then the sea, then absolutely nothing at all.</div>
+        </div>
+      </div>
+      <div class="ti hl">
+        <div class="t-time">16:00</div>
+        <div>
+          <div class="t-title">Girl Dinner</div>
+          <div class="t-desc">A grazing table of cheese, jamón, dips and chocolate to line the stomach. Dinner proper is later.</div>
+          <span class="badge b-sage">Menu below ↓</span>
+        </div>
+      </div>
+      <div class="ti ft">
+        <div class="t-time">17:00</div>
+        <div>
+          <div class="t-title">Getting Ready — All White for the Bridal Era</div>
+          <div class="t-desc">Head to toe, no exceptions. Music loud, mirrors busy, spritz in hand.</div>
+          <span class="badge b-terra">Dress code</span>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="t-time">18:15</div>
+        <div>
+          <div class="t-title">Leave the House</div>
+          <div class="t-desc">Sharp. The table is booked and the city is busy tonight.</div>
+        </div>
+      </div>
+      <div class="ti hl">
+        <div class="t-time">19:30</div>
+        <div>
+          <div class="t-title">Dinner — Bar Babula or Bar Bocata</div>
+          <div class="t-desc">Booked and waiting. Long table, low red light, wine on ice.</div>
+          <span class="badge b-ocean">Reserved</span>
+        </div>
+      </div>
+      <div class="ti sp">
+        <div class="t-time">After dinner</div>
+        <div>
+          <div class="t-title">Out for La Diada</div>
+          <div class="t-desc">Catalonia&#39;s national day fills the streets — flags, music and free events, mostly around Ciutat Vella and the Arc de Triomf. Find a good spot and walk through it.</div>
+          <span class="badge b-tbd">Spot to be scouted</span>
+        </div>
+      </div>
+      <div class="ti ft">
+        <div class="t-time">Late</div>
+        <div>
+          <div class="t-title">Dancing</div>
+          <div class="t-desc"><a href="https://www.sala-apolo.com/en/event/milkshake-la-diada-20260910-7553" target="_blank" style="color:var(--ocean);text-decoration:none;border-bottom:1px solid var(--ocean-light)">Sala Apolo</a> runs a dedicated La Diada party, and INPUT High Fidelity Dance Club goes late all weekend. Marie picks.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="split">
+    <div class="split-media"><img class="photo tall" src="images/all-in-white.jpg" alt="Everyone dressed in white, dancing"></div>
+    <div>
+      <p class="split-title">Everyone in white</p>
+      <p class="split-text">Friday night has one rule and it is not negotiable. White dresses, white linen, white everything — the whole group in bridal white behind Marie, all the way through dinner and into the night.</p>
+      <p class="split-text">Pack it, don&#39;t improvise it. There will be photographs.</p>
+    </div>
+  </div>
+
+  <div class="split rev">
+    <div class="split-media"><img class="photo tall" src="images/bar-babula.jpg" alt="The long table at the bar, lit red"></div>
+    <div>
+      <p class="split-title">Bar Babula or Bar Bocata</p>
+      <p class="split-text">One long table, red light, bottles on ice and glasses already set. Both are booked — we pick on the day depending on where everyone&#39;s energy is.</p>
+      <p class="split-text">Friday is La Diada, so the city is out and busy. The table is held, but we should get there on time.</p>
+    </div>
+  </div>
+
+  <div class="wdiv"><div class="wdiv-line"></div><svg width="32" height="16" viewBox="0 0 32 16" fill="none"><path d="M0,8 Q8,0 16,8 Q24,16 32,8" stroke="#A8CDD8" stroke-width="1.2" fill="none"/></svg><div class="wdiv-line"></div></div>
+
+  <!-- SATURDAY -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">03</div>
+      <div><div class="day-name">Saturday</div><div class="day-date">12 September 2026</div></div>
+      <div class="day-tag"><span class="pill p-sage">Adventure</span></div>
+    </div>
+    <div class="timeline">
+      <div class="ti hl">
+        <div class="t-time">10:30</div>
+        <div>
+          <div class="t-title">Breakfast at the House</div>
+          <div class="t-desc">Pastries, eggs, coffee, then everyone gets ready.</div>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="t-time">12:30</div>
+        <div>
+          <div class="t-title">Out the Door</div>
+          <div class="t-desc">Into the city, ready for the hunt.</div>
+        </div>
+      </div>
+      <div class="ti sp">
+        <div class="t-time">12:35</div>
+        <div>
+          <div class="t-title">Jolien Lands</div>
+          <div class="t-desc">Bag dropped, straight into it — she meets us at the first checkpoint.</div>
+        </div>
+      </div>
+      <div class="ti sp">
+        <div class="t-time">13:30</div>
+        <div>
+          <div class="t-title">Scavenger Hunt Across the City</div>
+          <div class="t-desc">Three to four hours, two teams, clues all over Barcelona — stopping for food along the way. Glory on the line.</div>
+          <span class="badge b-ocean">3–4 hours</span>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="t-time">17:30</div>
+        <div>
+          <div class="t-title">Hunt Winds Down</div>
+          <div class="t-desc">Winners declared somewhere between 16:30 and 17:30, depending on how competitive it gets.</div>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="t-time">18:30</div>
+        <div>
+          <div class="t-title">Home, Shower, Reset</div>
+          <div class="t-desc">Feet up for half an hour before the second half of the day.</div>
+        </div>
+      </div>
+      <div class="ti hl">
+        <div class="t-time">19:00</div>
+        <div>
+          <div class="t-title">Cook, Eat, Kombucha Spritz</div>
+          <div class="t-desc">Dinner at the house before we head out — and this is where the spritz jug comes out.</div>
+          <span class="badge b-sage">Menu below ↓</span>
+        </div>
+      </div>
+      <div class="ti ft">
+        <div class="t-time">21:00</div>
+        <div>
+          <div class="t-title">The Magic Show</div>
+          <div class="t-desc">Fifty minutes, front row energy, no phones.</div>
+          <span class="badge b-terra">50 minutes</span>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="t-time">22:30</div>
+        <div>
+          <div class="t-title">Games Night — or an Early One</div>
+          <div class="t-desc">Cards and a nightcap back at the house, or straight to bed so Sunday can start properly. Group decides.</div>
+          <span class="badge b-tbd">Group call</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wdiv"><div class="wdiv-line"></div><svg width="32" height="16" viewBox="0 0 32 16" fill="none"><path d="M0,8 Q8,0 16,8 Q24,16 32,8" stroke="#A8CDD8" stroke-width="1.2" fill="none"/></svg><div class="wdiv-line"></div></div>
+
+  <!-- SUNDAY -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">04</div>
+      <div><div class="day-name">Sunday</div><div class="day-date">13 September 2026</div></div>
+      <div class="day-tag"><span class="pill p-ocean">One Last Climb</span></div>
+    </div>
+    <div class="timeline">
+      <div class="ti hl">
+        <div class="t-time">08:30</div>
+        <div>
+          <div class="t-title">Breakfast at the House</div>
+          <div class="t-desc">Whatever the fridge has left, plus snack bags packed for the walk.</div>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="t-time">10:00</div>
+        <div>
+          <div class="t-title">Checkout</div>
+          <div class="t-desc">Keys back, house cleared, one last group photo on the steps.</div>
+        </div>
+      </div>
+      <div class="ti sp">
+        <div class="t-time">11:00</div>
+        <div>
+          <div class="t-title">Suitcases Dropped</div>
+          <div class="t-desc">Luggage into storage so we can walk the rest of the day unencumbered.</div>
+          <span class="badge b-tbd">Storage spot TBC</span>
+        </div>
+      </div>
+      <div class="ti hl">
+        <div class="t-time">11:30</div>
+        <div>
+          <div class="t-title">Matcha &amp; Coffee in Gràcia</div>
+          <div class="t-desc">La Papa Lab or Niwa Cafeteria — fuel before the hill.</div>
+          <span class="badge b-sage">Gràcia</span>
+        </div>
+      </div>
+      <div class="ti sp">
+        <div class="t-time">12:00</div>
+        <div>
+          <div class="t-title">Walk Up to Tibidabo</div>
+          <div class="t-desc">Four hours there and back from Gràcia, uphill the whole way out, the city opening up behind us.</div>
+          <span class="badge b-ocean">Pack snacks &amp; water</span>
+        </div>
+      </div>
+      <div class="ti ft">
+        <div class="t-time">14:00</div>
+        <div>
+          <div class="t-title">Temple del Sagrat Cor</div>
+          <div class="t-desc">The whole of Barcelona and the sea, laid out underneath us. Worth every step.</div>
+        </div>
+      </div>
+      <div class="ti">
+        <div class="t-time">16:00</div>
+        <div>
+          <div class="t-title">Back Down, Back in the City</div>
+          <div class="t-desc">Walk it or take the funicular and the Tramvia Blau if legs have opinions.</div>
+        </div>
+      </div>
+      <div class="ti sp">
+        <div class="t-time">16:45</div>
+        <div>
+          <div class="t-title">Goodbye Nicole</div>
+          <div class="t-desc">She has a 19:00 flight, so this is the one. Make it count.</div>
+        </div>
+      </div>
+      <div class="ti hl">
+        <div class="t-time">17:00</div>
+        <div>
+          <div class="t-title">One Final Late Lunch</div>
+          <div class="t-desc">Marie, Maxence, Max, Nina — and Audrey &amp; David if they&#39;re still with us.</div>
+        </div>
+      </div>
+      <div class="ti ft">
+        <div class="t-time">18:30</div>
+        <div>
+          <div class="t-title">To the Airport</div>
+          <div class="t-desc">Marie, Nina and Maxence head off. Max stays until Monday.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="split">
+    <div class="split-media"><img class="photo" src="images/tibidabo.jpg" alt="Tibidabo church above Barcelona at sunset"></div>
+    <div>
+      <p class="split-title">Up to Tibidabo</p>
+      <p class="split-text">Out of Gràcia and up, ending at the Temple Expiatori del Sagrat Cor with the whole city and the Mediterranean below. Four hours round trip, so we start at midday and are back by four.</p>
+      <p class="split-text">Trainers, not sandals. Water for everyone, snacks in a bag, and sun cream — there is very little shade on the way up.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEASTS -->
+<section class="band" id="feasts">
+  <div class="inner">
+    <p class="s-eye">Cooking for Ten</p>
+    <h2 class="s-title">The Feasts</h2>
+    <p class="s-intro">Five meals in the house, all built for ten people, one oven and a holiday kitchen. Nothing here needs a skill anyone has to learn.</p>
+
+    <div class="note">
+      <p class="note-label">Read this before Thursday</p>
+      <p class="note-title">Friday is La Diada. The shops will be shut.</p>
+      <p>11 September is Catalonia&#39;s national day. Supermarkets, banks and most shops close for the whole day and bakeries shut by 2pm, so everything we eat on Friday has to be in the house by Thursday night.</p>
+      <p>Do the big shop on Thursday afternoon, or book a Mercadona delivery to the house for around 5pm so nobody carries bags across town in September heat.</p>
+    </div>
+
+    <div class="feast-grid">
+      <div class="feast-card">
+        <div class="feast-head sage">
+          <div class="feast-when">Thursday · 20:45</div>
+          <div class="feast-name">The Welcome Feast</div>
+        </div>
+        <div class="feast-body">
+          <ul class="feast-list">
+            <li><strong>One-pan chicken, chorizo &amp; saffron rice</strong> — two big trays, browned then oven-baked for 35 minutes</li>
+            <li>Patatas bravas with garlic aioli</li>
+            <li>Blistered padrón peppers, flaky salt</li>
+            <li>Pa amb tomàquet — bread, tomato, garlic, olive oil</li>
+            <li>Board of jamón, manchego, olives and almonds</li>
+            <li>Peaches, ice cream and crema catalana</li>
+          </ul>
+          <p class="feast-foot">Everyone gets a job. The rice sits happily for an hour, so Nina eats the same dinner as the rest of us.</p>
+        </div>
+      </div>
+
+      <div class="feast-card">
+        <div class="feast-head ocean">
+          <div class="feast-when">Friday · 11:00</div>
+          <div class="feast-name">The Long Brunch</div>
+        </div>
+        <div class="feast-body">
+          <ul class="feast-list">
+            <li><strong>Spanish tortilla</strong> — made Thursday night, eaten cold, which is correct and not lazy</li>
+            <li>Scrambled eggs and very good bread</li>
+            <li>Pa amb tomàquet again, because it is that good</li>
+            <li>Melon, peaches and berries</li>
+            <li>Yoghurt, honey and granola</li>
+            <li>Coffee, an unreasonable amount of it</li>
+          </ul>
+          <p class="feast-foot">Every single ingredient bought on Thursday. Nothing is open today.</p>
+        </div>
+      </div>
+
+      <div class="feast-card">
+        <div class="feast-head terra">
+          <div class="feast-when">Friday · 16:00</div>
+          <div class="feast-name">Girl Dinner</div>
+        </div>
+        <div class="feast-body">
+          <ul class="feast-list">
+            <li><strong>A grazing table, no plates required</strong></li>
+            <li>Cheese, jamón and chorizo</li>
+            <li>Hummus, whipped feta and crudités</li>
+            <li>Olives, cornichons, marcona almonds</li>
+            <li>Melon and jamón</li>
+            <li>Crisps. Obviously crisps.</li>
+            <li>Dark chocolate and strawberries</li>
+          </ul>
+          <p class="feast-foot">Nibbles only — dinner is out at 19:30. Eat standing up while everyone gets ready.</p>
+        </div>
+      </div>
+
+      <div class="feast-card">
+        <div class="feast-head sand">
+          <div class="feast-when">Saturday · 10:30</div>
+          <div class="feast-name">Grab &amp; Go</div>
+        </div>
+        <div class="feast-body">
+          <ul class="feast-list">
+            <li>Croissants and ensaïmadas from the bakery</li>
+            <li>Boiled eggs</li>
+            <li>Yoghurt bowls and fruit</li>
+            <li>Coffee in a cup that travels</li>
+          </ul>
+          <p class="feast-foot">We leave at 12:30 and eat again on the hunt. Enough to get us out the door.</p>
+        </div>
+      </div>
+
+      <div class="feast-card">
+        <div class="feast-head sage">
+          <div class="feast-when">Saturday · 19:00</div>
+          <div class="feast-name">Before the Show</div>
+        </div>
+        <div class="feast-body">
+          <ul class="feast-list">
+            <li><strong>Chicken and prawn skewers</strong> — marinated in the morning, griddled in fifteen minutes when we get home</li>
+            <li>Escalivada — roasted peppers, aubergine and onion in olive oil, made in the afternoon</li>
+            <li>Saffron rice and crusty bread</li>
+            <li>Catalan salad — tomato, white beans, tuna, olives, red onion</li>
+            <li>Churros and chocolate</li>
+          </ul>
+          <p class="feast-foot">Home at 18:30, eating by 19:15, out the door for 21:00. The kombucha spritz jug comes out here.</p>
+        </div>
+      </div>
+
+      <div class="feast-card">
+        <div class="feast-head ocean">
+          <div class="feast-when">Sunday · 08:30</div>
+          <div class="feast-name">Before the Climb</div>
+        </div>
+        <div class="feast-body">
+          <ul class="feast-list">
+            <li>Whatever the fridge has left — eggs, bread, tomato, fruit</li>
+            <li>The last of the coffee</li>
+            <li><strong>Snack bags for the hike</strong> — nuts, chocolate, fruit, small bocadillos</li>
+            <li>Every water bottle filled to the top</li>
+          </ul>
+          <p class="feast-foot">Four hours of walking and no shops on the hill. Take more water than feels sensible.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="drink">
+      <div>
+        <p class="drink-name">The Kombucha Spritz</p>
+        <p class="drink-sub">The drink the scarves are named after. Zero alcohol as standard so everyone can have one, with a splash of gin or cava for anyone who wants it. Make a jug, keep it in the fridge, refill all weekend.</p>
+      </div>
+      <div>
+        <ul class="drink-list">
+          <li>Ginger or hibiscus kombucha, properly cold</li>
+          <li>A splash of soda water</li>
+          <li>A squeeze of fresh orange</li>
+          <li>A sprig of rosemary, slapped between your hands first</li>
+          <li>Big ice, tall glass, orange wheel on top</li>
+          <li>Optional: a measure of gin, or top with cava</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note ocean">
+      <p class="note-label">The Big Shop · Thursday</p>
+      <p class="note-title">One trolley, two days of food</p>
+      <div class="shop-grid">
+        <div class="shop-cat">
+          <div class="shop-head">Fresh</div>
+          <p class="shop-items">Chicken thighs 2.5kg · cooking chorizo 500g · raw prawns 1kg · jamón serrano · manchego · eggs ×24 · Greek yoghurt · butter · milk &amp; oat milk</p>
+        </div>
+        <div class="shop-cat">
+          <div class="shop-head">Vegetables &amp; fruit</div>
+          <p class="shop-items">Tomatoes 3kg · red onions ×8 · garlic ×3 · red peppers ×8 · aubergines ×3 · padrón peppers · potatoes 3kg · lemons · oranges · melon ×2 · peaches · berries · salad leaves · parsley, mint, rosemary</p>
+        </div>
+        <div class="shop-cat">
+          <div class="shop-head">Cupboard</div>
+          <p class="shop-items">Paella rice 1.5kg · saffron · smoked paprika · good olive oil · sherry vinegar · white beans · tuna · chopped tomatoes · olives · marcona almonds · mayonnaise for aioli · stock · granola · honey</p>
+        </div>
+        <div class="shop-cat">
+          <div class="shop-head">Bread &amp; sweet</div>
+          <p class="shop-items">Baguettes and pa de coca ×6 · croissants · ensaïmadas · crema catalana pots ×10 · vanilla ice cream · dark chocolate · churros</p>
+        </div>
+        <div class="shop-cat">
+          <div class="shop-head">Drinks</div>
+          <p class="shop-items">Kombucha ×8 · cava ×6 · red and white wine ×8 · vermut ×2 · soda water · orange juice · still water ×24 · tonic · coffee · lots of ice, bought twice</p>
+        </div>
+        <div class="shop-cat">
+          <div class="shop-head">House</div>
+          <p class="shop-items">Bin bags · kitchen roll · foil and baking paper · washing-up liquid · dishwasher tablets · sun cream top-up</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUESTS -->
+<section id="guests">
+  <p class="s-eye">The People</p>
+  <h2 class="s-title">The Crew</h2>
+  <p class="s-intro">The best humans in the world, together in one beautiful house in Barcelona.</p>
+  <div class="guests-grid">
+    <div class="g-card bride"><div class="g-av bride">M</div><div class="g-name">Marie</div><div class="g-role">The Bride ♡</div></div>
+    <div class="g-card"><div class="g-av sage">Mx</div><div class="g-name">Maxence</div><div class="g-role">Sister of the Bride</div></div>
+    <div class="g-card"><div class="g-av ocean">N</div><div class="g-name">Nicole</div><div class="g-role">Bestie · FIS</div></div>
+    <div class="g-card"><div class="g-av terra">Mx</div><div class="g-name">Max</div><div class="g-role">Bestie · Belgium</div></div>
+    <div class="g-card"><div class="g-av sage">Ni</div><div class="g-name">Nina</div><div class="g-role">Bestie · UoG</div></div>
+    <div class="g-card"><div class="g-av ocean">D</div><div class="g-name">David</div><div class="g-role">Bestie · FIS</div></div>
+    <div class="g-card"><div class="g-av terra">Au</div><div class="g-name">Audrey</div><div class="g-role">Bestie · Met through David</div></div>
+    <div class="g-card"><div class="g-av sage">Ch</div><div class="g-name">Chiara</div><div class="g-role">Bestie · FIS</div></div>
+    <div class="g-card"><div class="g-av ocean">Jo</div><div class="g-name">Jolien</div><div class="g-role">Bestie · Keerbergen</div></div>
+    <div class="g-card"><div class="g-av terra">Sa</div><div class="g-name">Sabrina</div><div class="g-role">Bestie</div></div>
+  </div>
+</section>
+
+<!-- STAY -->
+<section class="band" id="stay">
+  <div class="inner">
+    <p class="s-eye">Our Home</p>
+    <h2 class="s-title">Where We Stay</h2>
+    <p class="s-intro">A whitewashed fisherman's house by the sea — blue shutters, a long table, Barcelona on the doorstep.</p>
+    <div class="stay-card">
+      <div>
+        <p class="stay-label">Our Barcelona Home</p>
+        <p class="stay-name">Fisherman's House by the Sea</p>
+        <p class="stay-addr">Barcelona, Spain &nbsp;·&nbsp; Airbnb</p>
+        <p class="stay-note">"White walls, blue shutters, bougainvillea in bloom, and a bicycle by the gate. Could not be more perfect for us."</p>
+      </div>
+      <ul class="stay-list">
+        <li><div class="stay-dot"></div>Check-in: Thursday 10 Sept · 15:00</li>
+        <li><div class="stay-dot"></div>Checkout: Sunday 13 Sept · we leave by 10:00</li>
+        <li><div class="stay-dot"></div>The whole crew under one roof</li>
+        <li><div class="stay-dot"></div>Close to the beach &amp; the city</li>
+        <li><div class="stay-dot"></div>WiFi &amp; all essentials included</li>
+        <li><div class="stay-dot"></div>Suitcases into storage by 11:00 on Sunday</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MERCH -->
+<section id="merch">
+  <p class="s-eye">What to Wear</p>
+  <h2 class="s-title">The Merch</h2>
+  <p class="s-intro">Handed out Thursday night once everyone has landed. Worn all weekend, everywhere, without argument.</p>
+  <div class="merch-grid">
+    <div class="m-card">
+      <img class="m-photo" src="images/scarf.jpg" alt="Light blue paisley head scarf">
+      <div class="m-name">The Head Scarf</div>
+      <div class="m-note">Blue paisley · embroidered <em>I&#39;m bubbly as kombucha</em></div>
+    </div>
+    <div class="m-card">
+      <img class="m-photo" src="images/andre-tattoo.png" alt="Temporary tattoo of André">
+      <div class="m-name">André Tattoos</div>
+      <div class="m-note">Temporary · worn with pride · everyone gets one</div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKING -->
+<section class="band" id="packing">
+  <div class="inner">
+    <p class="s-eye">Don't Forget</p>
+    <h2 class="s-title">Pack List</h2>
+    <p class="s-intro">Everything you need for four days of Barcelona sunshine and sea.</p>
+    <div class="pack-grid">
+      <div class="pack-cat"><div class="pack-head ocean">Beach &amp; Sea</div><ul class="pack-list"><li>Swimwear (at least 2 sets)</li><li>Sunscreen SPF 50+</li><li>Beach towel</li><li>Sunglasses</li><li>Your head scarf</li><li>Beach bag</li><li>Flip flops / slides</li><li>Waterproof phone case</li></ul></div>
+      <div class="pack-cat"><div class="pack-head terra">Going Out</div><ul class="pack-list"><li>Party outfit(s)</li><li>Dancing shoes</li><li>Small going-out bag</li><li>André tattoo (worn!)</li><li>Bachelorette merch</li><li>Card &amp; cash</li><li>Something white for Friday</li></ul></div>
+      <div class="pack-cat"><div class="pack-head">Daytime</div><ul class="pack-list"><li>Casual outfits for each day</li><li>Dinner outfit for Friday</li><li>Activity / hiking shoes</li><li>Light layers for evenings</li><li>Comfortable sneakers</li></ul></div>
+      <div class="pack-cat"><div class="pack-head">Toiletries</div><ul class="pack-list"><li>Shampoo &amp; conditioner</li><li>Skincare routine</li><li>Toothbrush &amp; paste</li><li>After-sun lotion</li><li>Any medication</li><li>Dry shampoo</li></ul></div>
+      <div class="pack-cat"><div class="pack-head sage">Activities</div><ul class="pack-list"><li>Yoga mat (optional)</li><li>Power bank</li><li>Reusable water bottle</li><li>Disposable camera</li><li>Trainers for the Tibidabo hike</li>
+<li>Refillable water bottle for Sunday</li></ul></div>
+      <div class="pack-cat"><div class="pack-head ocean">Essentials</div><ul class="pack-list"><li>Passport / ID</li><li>Travel insurance details</li><li>A great playlist downloaded</li><li>A game to share — Maxence has some, bring more</li><li>Good energy only</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIBES -->
+<section id="vibes">
+  <p class="s-eye">The Aesthetic</p>
+  <h2 class="s-title">The Vibes</h2>
+  <p class="s-intro">Blue shutters. Bougainvillea. Sea salt in the air. All of us, together in the most beautiful city.</p>
+  <div class="vibes-board">
+    <div class="vc ocean tall">
+      <div class="vibe-word">Mediterranean</div>
+      <div class="vibe-sub">Cobblestones · blue shutters · morning light on white walls</div>
+    </div>
+    <div class="vc sage">
+      <div class="vibe-word">Golden</div>
+      <div class="vibe-sub">Barcelona sunshine · slow mornings · warm evenings</div>
+    </div>
+    <div class="vc terra">
+      <div class="vibe-word">Wild</div>
+      <div class="vibe-sub">Dancing on the sand · late nights · full hearts</div>
+    </div>
+    <div class="vc sand">
+      <div class="vibe-word">Together</div>
+      <div class="vibe-sub">All of us · one house · a lifetime of memories</div>
+    </div>
+    <div class="vc ocean">
+      <div class="vibe-word">Sea Salt</div>
+      <div class="vibe-sub">Open water · spritz in hand · sunshine on our faces</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="ft-script">To Marie, with love</p>
+  <p>Here's to the most wonderful weekend — and the most wonderful marriage ahead.</p>
+  <p class="ft-meta">Barcelona &nbsp;·&nbsp; 10 – 13 September 2026 &nbsp;·&nbsp; The Crew ♡</p>
+</footer>
+
+</body>
+</html>
